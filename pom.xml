@@ -11,7 +11,7 @@
 	<groupId>com.anish</groupId>
 	<artifactId>expensemanager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>expensemanager</name>
+	<name>Expense Manager</name>
 	<description>Expense Manager project for Spring Boot</description>
 	<url/>
 	<licenses>
