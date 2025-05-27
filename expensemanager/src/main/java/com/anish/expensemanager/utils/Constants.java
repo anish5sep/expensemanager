@@ -1,4 +1,4 @@
-package com.anish.expensemanager.utils;
+package com.anish.expensemanager.constants;
 
 public class Constants {
 }
