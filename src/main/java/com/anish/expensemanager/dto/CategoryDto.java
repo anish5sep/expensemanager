@@ -3,15 +3,11 @@ package com.anish.expensemanager.dto;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class CategoryDto {
 
     private Long id;
 
     private String name;
 
-    private String email;
-
-    private String password;
-
-    private RoleDto role;
+    private String description;
 }
