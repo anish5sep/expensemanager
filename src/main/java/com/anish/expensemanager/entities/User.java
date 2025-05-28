@@ -1,13 +1,12 @@
 package com.anish.expensemanager.entities;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,5 +21,4 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
-
 }
