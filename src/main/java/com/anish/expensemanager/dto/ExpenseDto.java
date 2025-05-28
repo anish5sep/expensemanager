@@ -1,6 +1,8 @@
 package com.anish.expensemanager.dto;
 
 import lombok.Data;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -10,11 +12,12 @@ public class ExpenseDto {
 
     private String title;
 
-    private Double amount;
-
-    private CategoryDto category;
+    private BigDecimal amount;
 
     private LocalDate date;
 
-    private Long userId;
+    private CategoryDto category;
+
+    private UserDto user;
+
 }

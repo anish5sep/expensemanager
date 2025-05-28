@@ -1,7 +1,9 @@
 package com.anish.expensemanager.entities;
 
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -15,16 +17,15 @@ public class Expense {
 
     private String title;
 
-    private Double amount;
+    private BigDecimal amount;
+
+    private LocalDate date;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    private LocalDate date;
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
 }

@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
+        // Role check
         Role role = roleRepository.findById(userDto.getRole().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + userDto.getRole().getId()));
 
         User user = UserMapper.toEntity(userDto);
         user.setRole(role);
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
         return UserMapper.toDto(user);
     }
 
@@ -52,24 +53,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(Long id, UserDto userDto) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
         Role role = roleRepository.findById(userDto.getRole().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
-        user.setRole(role);
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + userDto.getRole().getId()));
 
-        return UserMapper.toDto(userRepository.save(user));
+        existingUser.setName(userDto.getName());
+        existingUser.setEmail(userDto.getEmail());
+        existingUser.setPassword(userDto.getPassword());
+        existingUser.setRole(role);
+
+        User updatedUser = userRepository.save(existingUser);
+        return UserMapper.toDto(updatedUser);
     }
 
     @Override
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new ResourceNotFoundException("User not found");
+            throw new ResourceNotFoundException("User not found with id: " + id);
         }
         userRepository.deleteById(id);
     }
