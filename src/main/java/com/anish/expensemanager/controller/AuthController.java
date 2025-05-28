@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(AppConstants.BASE_URL)
 public class AuthController {
 
-    @PostMapping(AppConstants.AUTH_URL)
-    public ResponseEntity<> registerUser(){
-
-    }
+//    @PostMapping(AppConstants.AUTH_URL)
+//    public ResponseEntity<> registerUser(){
+//
+//    }
 }
