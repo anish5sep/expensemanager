@@ -1,48 +1,32 @@
 package com.anish.expensemanager.controller;
 
-import com.anish.expensemanager.constants.AppConstants;
 import com.anish.expensemanager.dto.ExpenseDTO;
 import com.anish.expensemanager.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.List;
 
+
 @RestController
-@RequestMapping(AppConstants.EXPENSE_URL) // "/expenses"
+@RequestMapping("/api/expenses")
 public class ExpenseController {
 
     @Autowired
     private ExpenseService expenseService;
 
-    @PostMapping
-    public ResponseEntity<ExpenseDTO> createExpense(@RequestBody ExpenseDTO expenseDto) {
-        ExpenseDTO createdExpense = expenseService.createExpense(expenseDto);
-        return ResponseEntity.ok(createdExpense);
-    }
-
-    @GetMapping(AppConstants.GET_EXPENSE_BY_ID) // "/{id}"
-    public ResponseEntity<ExpenseDTO> getExpenseById(@PathVariable Long id) {
-        ExpenseDTO expense = expenseService.getExpenseById(id);
-        return ResponseEntity.ok(expense);
-    }
-
     @GetMapping
-    public ResponseEntity<List<ExpenseDTO>> getAllExpenses() {
-        List<ExpenseDTO> expenses = expenseService.getAllExpenses();
-        return ResponseEntity.ok(expenses);
+    public ResponseEntity<List<ExpenseDTO>> getAll(@AuthenticationPrincipal UserDetails userDetails) {
+        return ResponseEntity.ok(expenseService.getAllExpenses(userDetails.getUsername()));
     }
 
-    @PutMapping(AppConstants.UPDATE_EXPENSE) // "/{id}"
-    public ResponseEntity<ExpenseDTO> updateExpense(@PathVariable Long id, @RequestBody ExpenseDTO expenseDto) {
-        ExpenseDTO updatedExpense = expenseService.updateExpense(id, expenseDto);
-        return ResponseEntity.ok(updatedExpense);
-    }
-
-    @DeleteMapping(AppConstants.DELETE_EXPENSE) // "/{id}"
-    public ResponseEntity<Void> deleteExpense(@PathVariable Long id) {
-        expenseService.deleteExpense(id);
-        return ResponseEntity.noContent().build();
+    @PostMapping
+    public ResponseEntity<ExpenseDTO> addExpense(@AuthenticationPrincipal UserDetails userDetails,
+                                                 @RequestBody ExpenseDTO dto) {
+        return ResponseEntity.ok(expenseService.addExpense(userDetails.getUsername(), dto));
     }
 }

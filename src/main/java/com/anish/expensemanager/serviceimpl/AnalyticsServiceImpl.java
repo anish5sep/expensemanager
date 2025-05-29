@@ -1,9 +1,8 @@
-package com.anish.expensemanager.security.serviceimpl;
+package com.anish.expensemanager.serviceimpl;
 
 import com.anish.expensemanager.entities.Expense;
 import com.anish.expensemanager.repository.ExpenseRepository;
 import com.anish.expensemanager.repository.UserRepository;
-import com.anish.expensemanager.services.AnalyticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,8 @@
-package com.anish.expensemanager.security.serviceimpl;
+package com.anish.expensemanager.serviceimpl;
 
 import com.anish.expensemanager.dto.IncomeDTO;
 import com.anish.expensemanager.entities.Income;
 import com.anish.expensemanager.repository.IncomeRepository;
-import com.anish.expensemanager.services.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
