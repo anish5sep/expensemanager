@@ -1,4 +1,4 @@
 package com.anish.expensemanager.exceptions;
 
-public class ResourceNotFoundException {
+public class ApiError {
 }

@@ -8,13 +8,12 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "incomes")
 public class Income {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String source;
-
-    private String description;
 
     private double amount;
 
@@ -23,5 +22,5 @@ public class Income {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-}
 
+}

@@ -9,13 +9,14 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "expenses")
 public class Expense {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
 
-    private String description;
+    private String category;
 
     private double amount;
 
@@ -25,7 +26,5 @@ public class Expense {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 }
+
