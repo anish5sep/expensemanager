@@ -3,7 +3,7 @@ package com.anish.expensemanager.dto;
 import lombok.Data;
 
 @Data
-public class CategoryDto {
+public class RoleDTO {
     private Long id;
     private String name;
 }

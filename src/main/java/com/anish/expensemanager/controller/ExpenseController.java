@@ -1,8 +1,8 @@
 package com.anish.expensemanager.controller;
 
 import com.anish.expensemanager.constants.AppConstants;
-import com.anish.expensemanager.dto.ExpenseDto;
-import com.anish.expensemanager.service.ExpenseService;
+import com.anish.expensemanager.dto.ExpenseDTO;
+import com.anish.expensemanager.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,26 +17,26 @@ public class ExpenseController {
     private ExpenseService expenseService;
 
     @PostMapping
-    public ResponseEntity<ExpenseDto> createExpense(@RequestBody ExpenseDto expenseDto) {
-        ExpenseDto createdExpense = expenseService.createExpense(expenseDto);
+    public ResponseEntity<ExpenseDTO> createExpense(@RequestBody ExpenseDTO expenseDto) {
+        ExpenseDTO createdExpense = expenseService.createExpense(expenseDto);
         return ResponseEntity.ok(createdExpense);
     }
 
     @GetMapping(AppConstants.GET_EXPENSE_BY_ID) // "/{id}"
-    public ResponseEntity<ExpenseDto> getExpenseById(@PathVariable Long id) {
-        ExpenseDto expense = expenseService.getExpenseById(id);
+    public ResponseEntity<ExpenseDTO> getExpenseById(@PathVariable Long id) {
+        ExpenseDTO expense = expenseService.getExpenseById(id);
         return ResponseEntity.ok(expense);
     }
 
     @GetMapping
-    public ResponseEntity<List<ExpenseDto>> getAllExpenses() {
-        List<ExpenseDto> expenses = expenseService.getAllExpenses();
+    public ResponseEntity<List<ExpenseDTO>> getAllExpenses() {
+        List<ExpenseDTO> expenses = expenseService.getAllExpenses();
         return ResponseEntity.ok(expenses);
     }
 
     @PutMapping(AppConstants.UPDATE_EXPENSE) // "/{id}"
-    public ResponseEntity<ExpenseDto> updateExpense(@PathVariable Long id, @RequestBody ExpenseDto expenseDto) {
-        ExpenseDto updatedExpense = expenseService.updateExpense(id, expenseDto);
+    public ResponseEntity<ExpenseDTO> updateExpense(@PathVariable Long id, @RequestBody ExpenseDTO expenseDto) {
+        ExpenseDTO updatedExpense = expenseService.updateExpense(id, expenseDto);
         return ResponseEntity.ok(updatedExpense);
     }
 

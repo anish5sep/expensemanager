@@ -1,12 +1,12 @@
 package com.anish.expensemanager.mapper;
 
-import com.anish.expensemanager.dto.IncomeDto;
+import com.anish.expensemanager.dto.IncomeDTO;
 import com.anish.expensemanager.entities.Income;
 
 public class IncomeMapper {
 
-    public static IncomeDto toDto(Income income) {
-        IncomeDto dto = new IncomeDto();
+    public static IncomeDTO toDto(Income income) {
+        IncomeDTO dto = new IncomeDTO();
         dto.setId(income.getId());
         dto.setSource(income.getSource());
         dto.setAmount(income.getAmount());
@@ -14,7 +14,7 @@ public class IncomeMapper {
         return dto;
     }
 
-    public static Income toEntity(IncomeDto dto) {
+    public static Income toEntity(IncomeDTO dto) {
         Income income = new Income();
         income.setId(dto.getId());
         income.setSource(dto.getSource());
