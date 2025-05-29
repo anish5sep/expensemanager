@@ -1,7 +1,6 @@
 package com.anish.expensemanager.security;
 
 import io.jsonwebtoken.*;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import java.util.Date;
@@ -13,7 +12,7 @@ public class JwtTokenProvider {
     @Value("${app.jwt.secret}")
     private String jwtSecret;
 
-    @Value("${app.jwt.expiration}")
+    @Value("${app.jwt.expiration-in-ms}")
     private long jwtExpirationMs;
 
     public String generateToken(String username) {
@@ -27,7 +26,6 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
-
 
     public String getUsernameFromJWT(String token) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token)

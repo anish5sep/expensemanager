@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public abstract class IncomeServiceImpl implements IncomeService {
+public class IncomeServiceImpl implements IncomeService {
 
     @Autowired
     private IncomeRepository incomeRepo;

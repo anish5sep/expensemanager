@@ -18,7 +18,7 @@ import java.util.Collections;
 
 
 @Service
-public abstract class AuthServiceImpl implements AuthService {
+public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private AuthenticationManager authManager;
