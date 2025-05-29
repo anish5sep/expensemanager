@@ -3,7 +3,7 @@ package com.anish.expensemanager.controller;
 import com.anish.expensemanager.dto.AuthRequest;
 import com.anish.expensemanager.dto.AuthResponse;
 import com.anish.expensemanager.entities.User;
-import com.anish.expensemanager.services.AuthService;
+import com.anish.expensemanager.service.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;

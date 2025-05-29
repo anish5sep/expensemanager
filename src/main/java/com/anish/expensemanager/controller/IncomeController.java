@@ -1,7 +1,7 @@
 package com.anish.expensemanager.controller;
 
 import com.anish.expensemanager.dto.IncomeDTO;
-import com.anish.expensemanager.services.IncomeService;
+import com.anish.expensemanager.service.interfaces.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,7 +20,7 @@ public class IncomeController {
 
     @GetMapping
     public ResponseEntity<List<IncomeDTO>> getAll(@AuthenticationPrincipal UserDetails userDetails) {
-        return ResponseEntity.ok(incomeService.getAllIncome(userDetails.getUsername()));
+        return ResponseEntity.ok(incomeService.getAllIncomes(userDetails.getUsername()));
     }
 
     @PostMapping

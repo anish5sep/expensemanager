@@ -1,7 +1,7 @@
 package com.anish.expensemanager.controller;
 
 import com.anish.expensemanager.dto.ExpenseDTO;
-import com.anish.expensemanager.services.ExpenseService;
+import com.anish.expensemanager.service.interfaces.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
